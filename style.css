@@ -73,7 +73,7 @@ button:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
 
@@ -89,6 +89,7 @@ button:hover {
     border-style: solid;
     border-radius: 20px 20px 0px 0px;
     padding: 10px;
+    -webkit-transform: translate(-50%, -385%);
     transform: translate(-50%, -385%);
 }
 

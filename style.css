@@ -1,0 +1,108 @@
+body {
+    font-family: Monaco, "Lucida Console", monospace;
+    background-image: url(./css/bg.jpg)
+}
+
+#answer {
+    text-align: center;
+}
+
+
+#answer1, #answer2, #totalBill, #tipValue {
+    text-align: right;
+    border: 1px solid gray;
+    padding: 10px
+}
+
+table {
+    border-collapse: collapse;
+}
+
+#form2 {
+    background-color: white;
+    width: 250px;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+#billInput, #percentageInput {
+    width: 45px;
+    -moz-appearance: textfield;
+}
+
+#form1 {
+    background-color: white;
+    width: 250px;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+button {
+    width: 85px;
+    height: 34px;
+    border: none;
+    font-size: 17px;
+    color: white;
+}
+
+#savebtn {
+    background-color: green;
+    
+}
+
+#clearbtn {
+    background-color: red;
+}
+
+button:hover {
+    opacity: 0.5;
+}
+
+#input-answer {
+    background-color: #c6c6c6;
+    width: 292px;
+    border: 3px solid black;
+    border-radius: 0px 0px 20px 20px;
+    padding: 20px;
+}
+
+.bugger {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+
+#text2 {
+    color: white;
+    font-family: Arial;
+    width: 312px;
+    font-size: 30px;
+    background-color: #B64B39;
+    border-width: 3px 3px 0px 3px;
+    border-color: black;
+    border-style: solid;
+    border-radius: 20px 20px 0px 0px;
+    padding: 10px;
+    transform: translate(-50%, -385%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

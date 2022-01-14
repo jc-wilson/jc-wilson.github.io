@@ -6,62 +6,51 @@
     <title>Tip Calculator</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./favicon.ico" rel="shortcut icon">
+    <link href="./style.css" rel="stylesheet">
   </head>
 
   <center>
 
-    <header>
-      <h1>TIP CALCULATOR</h1>
-    </header>
-
-    <hr>
-
     <body>
-
+     <p id="text2" class="bugger">TIP CALCULATOR<p>
+     <div id="input-answer" class="bugger">
       <div class="form">
-
-        <form>
-          <label for="billInput">Input your bill:&nbsp;&nbsp;&nbsp;</label>
+        <form id="form1">
+         <section id="inputs">
+          <label for="billInput">Input your bill: £</label>
           <input type="number" name="billInput" id="billInput">
              <br>
-           <label for="percentageInput">Input your tip %:</label>
+           <label for="percentageInput">Input your tip: &nbsp;%</label>
            <input type="number" name="percentageInput" id="percentageInput">
+          </section>
              <br>
            <button type="Submit" id="savebtn" onclick="calculateTip()">Submit</button>
+           <button type="reset" id="clearbtn">Clear</button>
          </form>
 
        </div>
 
        <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-       <br>
-
-       <div class="result">
-         <form>
-           <label for="tipValue">Tip amount:</label>
-           <input type="number" id="tipValue" disabled>
-             <br>
-           <label for="totalBill">Total bill:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-           <input type="number" id="totalBill" disabled>
-         </form>
+   
+       <div id="result">
+        <form id="form2">
+         <table>
+           <tr>
+             <td id="answer1">Tip amount:</td>
+             <td id="tipValue">0.00</td>
+           </tr>
+           <tr>
+             <td id="answer2">Total bill:</td>
+             <td id="totalBill">0.00</td>
+           </tr>
+         </table>
+        </form>
        </div>
-      <script src="script.js" type="text/javascript"></script>
-    </body>
-
-  </center>
-
+      </div>
+     <script src="script.js" type="text/javascript"></script>
+   </body>
+ </center>
 </html>
 
 

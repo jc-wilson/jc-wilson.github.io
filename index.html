@@ -2,102 +2,114 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pokédex Console Test</title>
-    <link rel="icon" type="image/favicon.jpg" href=".public\favicon.jpg">
+    <title>Pokédex Console</title>
+    <link rel="icon" type="image/x-icon" href="public/favicon.jpg">
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-<center>
-    <button id="randombtn"
-            onclick="randomPokemonButton()">Random Pokemon
-    </button>
-    <br>
-    <p id="result">&nbsp</p>
 
-    <form>
-        <label for="pokemonSort">Input type</label>
-        <input type="text" name="pokemonSort" id="input">
-    </form>
-    <form id="main-form">
-        <br>
-        <p id="resultInput"></p>
-        <br>
-        <label>Input 6 Pokemon to calculate the max BST:</label>
-        <br>
-        <br>
-        <input type="text" id="pokeOne">
-        <br>
-        <br>
-        <input type="text" id="pokeTwo">
-        <br>
-        <br>
-        <input type="text" id="pokeThree">
-        <br>
-        <br>
-        <input type="text" id="pokeFour">
-        <br>
-        <br>
-        <input type="text" id="pokeFive">
-        <br>
-        <br>
-        <input type="text" id="pokeSix">
-        <br>
-        <br>
-        <button type="button" id="randomiseBstPokemon" onclick="randomiseBstPokemonFunction(), bstButtonFunction()">Randomise</button>
-        <button id="reset" onclick="resetForm()">Reset</button>
-        <button type="button" id="bstButton" onclick="bstButtonFunction()">Submit</button>
-        <br>
-        <table>
-            <tr>
-                <th id="Pokemonth">Pokemon</th>
-                <th id="Statth">Stat</th>
-                <th id="Valueth">Value</th>
-            </tr>
-            <tr>
-                <td id="result1">&nbsp</td>
-                <td id="statType1">&nbsp</td>
-                <td id="valueOutput1">&nbsp</td>
-            </tr>
-            <tr>
-                <td id="result2">&nbsp</td>
-                <td id="statType2">&nbsp</td>
-                <td id="valueOutput2">&nbsp</td>
-            </tr>
-            <tr>
-                <td id="result3">&nbsp</td>
-                <td id="statType3">&nbsp</td>
-                <td id="valueOutput3">&nbsp</td>
-            </tr>
-            <tr>
-                <td id="result4">&nbsp</td>
-                <td id="statType4">&nbsp</td>
-                <td id="valueOutput4">&nbsp</td>
-            </tr>
-            <tr>
-                <td id="result5">&nbsp</td>
-                <td id="statType5">&nbsp</td>
-                <td id="valueOutput5">&nbsp</td>
-            </tr>
-            <tr>
-                <td id="result6">&nbsp</td>
-                <td id="statType6">&nbsp</td>
-                <td id="valueOutput6">&nbsp</td>
-            </tr>
-            <br>
-            <tr id="total">
-                <td id="total1">Total</td>
-                <td id="empty">&nbsp</td>
-                <td id="valueTotal">&nbsp</td>
-            </tr>
+    <header>
+        <h1>Pokédex Console</h1>
+        <p class="subtitle">Analyze, Randomize, and Explore Pokémon Stats</p>
+    </header>
 
-        </table>
-    </form>
-    <br>
-    <br>
-    <button id="randomAgentBtn" onclick="randomAgentBtn()">Random Agent</button>
-    <p id="randomAgentResult">&nbsp</p>
+    <main class="main-layout">
+    <!-- Left column -->
+    <div class="column">
+        <section class="card">
+            <h2>🎲 Random Pokémon</h2>
+            <button id="randombtn" onclick="randomPokemonButton()">Generate Random Pokémon</button>
+            <p id="result">&nbsp;</p>
 
-</center>
-<script src="script.js?v=1"></script>
+            <label for="input">Input Pokémon Type</label>
+            <input type="text" name="pokemonSort" id="input" placeholder="e.g. Fire, Water, Electric">
+            <p id="resultInput"></p>
+        </section>
+
+        <section class="card">
+            <h2>🧠 Random Agent</h2>
+            <button id="randomAgentBtn" onclick="randomAgentBtn()">Generate Random Agent</button>
+            <p id="randomAgentResult">&nbsp;</p>
+        </section>
+    </div>
+
+    <!-- Right column -->
+    <center>
+    <div class="column">
+        <section class="card">
+            <h2>📊 Team BST Calculator</h2>
+            <p>Enter up to six Pokémon to calculate their total base stat total (BST).</p>
+
+            <form id="main-form">
+                <div class="pokemon-inputs">
+                    <input type="text" id="pokeOne" placeholder="Pokémon 1">
+                    <input type="text" id="pokeTwo" placeholder="Pokémon 2">
+                    <input type="text" id="pokeThree" placeholder="Pokémon 3">
+                    <input type="text" id="pokeFour" placeholder="Pokémon 4">
+                    <input type="text" id="pokeFive" placeholder="Pokémon 5">
+                    <input type="text" id="pokeSix" placeholder="Pokémon 6">
+                </div>
+
+                <div class="button-group">
+                    <button type="button" id="randomiseBstPokemon" onclick="randomiseBstPokemonFunction(); bstButtonFunction()">Randomise</button>
+                    <button type="button" id="bstButton" onclick="bstButtonFunction()">Submit</button>
+                    <button type="reset" id="reset" onclick="resetForm()">Reset</button>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Pokémon</th>
+                                <th>Stat</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="result1">&nbsp;</td>
+                                <td id="statType1">&nbsp;</td>
+                                <td id="valueOutput1">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td id="result2">&nbsp;</td>
+                                <td id="statType2">&nbsp;</td>
+                                <td id="valueOutput2">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td id="result3">&nbsp;</td>
+                                <td id="statType3">&nbsp;</td>
+                                <td id="valueOutput3">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td id="result4">&nbsp;</td>
+                                <td id="statType4">&nbsp;</td>
+                                <td id="valueOutput4">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td id="result5">&nbsp;</td>
+                                <td id="statType5">&nbsp;</td>
+                                <td id="valueOutput5">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td id="result6">&nbsp;</td>
+                                <td id="statType6">&nbsp;</td>
+                                <td id="valueOutput6">&nbsp;</td>
+                            </tr>
+                            <tr id="total">
+                                <td><strong>Total</strong></td>
+                                <td>&nbsp;</td>
+                                <td id="valueTotal">&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </section>
+    </div>
+    </center>
+</main>
+
+    <script src="script.js?v=1"></script>
 </body>
 </html>

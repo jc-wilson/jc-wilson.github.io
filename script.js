@@ -19,6 +19,13 @@ fetch("pokemon.json").then(response => {
         return null;
     };
 
+    function randomPokemonFull() {
+        const r = Math.floor(Math.random() * 1025) + 1;
+        const p = pokemon.find(p => Number(p.number) === r);
+        if (p) return p;
+        return null;
+    };
+
     window.randomPokemonButton = function () {
         const result = randomPokemon();
         const output = document.getElementById("result");
@@ -122,17 +129,20 @@ fetch("pokemon.json").then(response => {
         for (let i = 1; i <= 6; i++) {
             const output = document.getElementById(`result${i}`)
             output.textContent = `${pokeHTML[i - 1]}`
-        };
+        }
+        ;
 
         for (let i = 1; i <= 6; i++) {
             const statType = document.getElementById(`statType${i}`)
             statType.textContent = `${pokeNames[i - 1]}`
-        };
+        }
+        ;
 
         for (let i = 1; i <= 6; i++) {
             const valueOutput = document.getElementById(`valueOutput${i}`)
             valueOutput.textContent = `${pokeValues2[i - 1][statMap[pokeNames[i - 1]]]}`
-        };
+        }
+        ;
 
         document.getElementById("valueTotal").textContent = `${bestSum}`
 
@@ -169,10 +179,79 @@ fetch("pokemon.json").then(response => {
     });
 
     window.bstGameFunction = function () {
-        let pokemonTotalBST = []
+        document.getElementById("bstGame").reset()
+        const select = document.getElementById("selectStats");
+        for (let option of select.options) {
+                option.disabled = false;
+            }
+        let gameRandomPokemon = []
+        for (let i = 1; i <= 6; i++) {
+            gameRandomPokemon.push(randomPokemonFull())
+        }
 
+        gameRandomPokemon.push(gameRandomPokemon[5])
+
+        const gameRandomPokemonOutput2 = document.getElementById("gameRandomPokemon")
+        gameRandomPokemonOutput2.textContent = `${gameRandomPokemon[0].name}`
+
+        console.log("gameRandomPokemon:", gameRandomPokemon)
+        const selectElement = document.getElementById("selectStats")
+        let j = 0
+        let userChoice = []
+        let userStats = []
+        selectElement.addEventListener("change", (event) => {
+            const disableChoice = selectElement.selectedIndex
+            document.getElementById("selectStats").options[`${disableChoice}`].disabled = true;
+            const gameRandomPokemonOutput = document.getElementById("gameRandomPokemon")
+            gameRandomPokemonOutput.textContent = `${gameRandomPokemon[j + 1].name}`
+            userChoice.push(selectElement.value)
+            userStats.push(gameRandomPokemon[j][userChoice[j]])
+            console.log("userChoice:", userChoice)
+            console.log("userStats:", userStats)
+            j++
+            if (j === 6) {
+                console.log("game finished")
+                finishGame()
+            }
+        })
+
+        let pokeValues = []
+        for (let i = 0; i <= 5; i++) {
+            pokeValues.push([gameRandomPokemon[i].hp, gameRandomPokemon[i].attack, gameRandomPokemon[i].defense, gameRandomPokemon[i].spAtk, gameRandomPokemon[i].spDef, gameRandomPokemon[i].speed])
+        }
+
+        function permute(arr) {
+            if (arr.length === 0) return [[]];
+            return arr.flatMap((v, i) =>
+                permute(arr.slice(0, i).concat(arr.slice(i + 1))).map(rest => [v, ...rest])
+            );
+        }
+
+        // Each stat index 0-5 needs a Pokémon assigned
+        const allPermutations = permute([0, 1, 2, 3, 4, 5]); // indices of Pokémon
+
+        let bestSum = -Infinity;
+        let bestAssignment = [];
+
+        allPermutations.forEach(assign => {
+            // assign[i] = Pokémon index for stat i
+            const sum = assign.reduce((acc, pokeIndex, statIndex) => acc + Number(pokeValues[pokeIndex][statIndex]), 0);
+            if (sum > bestSum) {
+                bestSum = sum;
+                bestAssignment = assign;
+            }
+        });
+
+        function finishGame() {
+            const sum1 = userStats.reduce((acc, current) => acc + Number(current), 0);
+            const userBST = document.getElementById("userBST")
+            const optimisedBST = document.getElementById("optimisedBST")
+            userBST.textContent = `Your BST: ${sum1}`
+            optimisedBST.textContent = `Optimised BST: ${bestSum}`
+        }
     }
-});
+})
+;
 
 fetch("valorant.json").then(response => {
     if (!response.ok) throw new Error("Failed to load JSON");
@@ -182,14 +261,18 @@ fetch("valorant.json").then(response => {
 
     function randomAgent() {
         const r = Math.floor(Math.random() * 28) + 1;
-        if (r === 8) {r = null; randomAgent();};
+        if (r === 8) {
+            r = null;
+            randomAgent();
+        }
+        ;
         console.log(r)
         const p = agentData.find(p => Number(p["No."]) === r);
         if (p) return p.Agent;
         return null;
     };
 
-    window.randomAgentBtn = function() {
+    window.randomAgentBtn = function () {
         const result = randomAgent();
         const output = document.getElementById("randomAgentResult");
         output.textContent = `Your random agent is ${result}!`;

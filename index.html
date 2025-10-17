@@ -8,12 +8,12 @@
 </head>
 <body>
 
-    <header>
-        <h1>Pokédex Console</h1>
-        <p class="subtitle">Analyze, Randomize, and Explore Pokémon Stats</p>
-    </header>
+<header>
+    <h1>Pokédex Console</h1>
+    <p class="subtitle">Analyze, Randomize, and Explore Pokémon Stats</p>
+</header>
 
-    <main class="main-layout">
+<main class="main-layout">
     <!-- Left column -->
     <div class="column">
         <section class="card">
@@ -34,41 +34,65 @@
             <input type="text" name="pokemonSort" id="input" placeholder="e.g. Fire, Water, Electric">
             <p id="resultInput"></p>
         </section>
+
+        <section class="card">
+            <center>
+                <button id="playGame" onclick="bstGameFunction()">Play Game</button>
+                <form id="bstGame">
+                    <h2>Pokemon BST Game</h2>
+                    <p id="gameRandomPokemon">&nbsp;</p>
+                    <label for="selectStats">Choose Stat</label>
+                    <select name="selectStats" id="selectStats">
+                        <option hidden disabled selected value> -- select an option -- </option>
+                        <option value="hp">HP</option>
+                        <option value="attack">Attack</option>
+                        <option value="defense">Defense</option>
+                        <option value="spAtk">Special Attack</option>
+                        <option value="spDef">Special Defense</option>
+                        <option value="speed">Speed</option>
+                    </select>
+                    <p id="userBST">&nbsp;</p>
+                    <p id="optimisedBST">&nbsp;</p>
+                </form>
+            </center>
+        </section>
     </div>
 
     <!-- Right column -->
     <center>
-    <div class="column">
-        <section class="card">
-            <h2>📊 Team BST Calculator</h2>
-            <p>Enter up to six Pokémon to calculate their total base stat total (BST).</p>
+        <div class="column">
+            <section class="card">
+                <h2>📊 Team BST Calculator</h2>
+                <p>Enter up to six Pokémon to calculate their total base stat total (BST).</p>
 
-            <form id="main-form">
-                <div class="pokemon-inputs">
-                    <input type="text" id="poke1" placeholder="Pokémon 1">
-                    <input type="text" id="poke2" placeholder="Pokémon 2">
-                    <input type="text" id="poke3" placeholder="Pokémon 3">
-                    <input type="text" id="poke4" placeholder="Pokémon 4">
-                    <input type="text" id="poke5" placeholder="Pokémon 5">
-                    <input type="text" id="poke6" placeholder="Pokémon 6">
-                </div>
+                <form id="main-form">
+                    <div class="pokemon-inputs">
+                        <input type="text" id="poke1" placeholder="Pokémon 1">
+                        <input type="text" id="poke2" placeholder="Pokémon 2">
+                        <input type="text" id="poke3" placeholder="Pokémon 3">
+                        <input type="text" id="poke4" placeholder="Pokémon 4">
+                        <input type="text" id="poke5" placeholder="Pokémon 5">
+                        <input type="text" id="poke6" placeholder="Pokémon 6">
+                    </div>
 
-                <div class="button-group">
-                    <button type="button" id="randomiseBstPokemon" onclick="randomiseBstPokemonFunction(); bstButtonFunction()">Randomise</button>
-                    <button type="button" id="bstButton" onclick="bstButtonFunction()">Submit</button>
-                    <button type="reset" id="reset" onclick="resetForm()">Reset</button>
-                </div>
+                    <div class="button-group">
+                        <button type="button" id="randomiseBstPokemon"
+                                onclick="randomiseBstPokemonFunction(); bstButtonFunction()">Randomise
+                        </button>
+                        <button type="button" id="bstButton" onclick="bstButtonFunction()">Submit</button>
+                        <button type="reset" id="reset" onclick="resetForm()">Reset</button>
+                    </div>
 
-                <div class="table-container">
-                    <table>
-                        <thead>
+                    <div class="table-container">
+                        <table>
+                            <thead>
                             <tr>
                                 <th>Pokémon</th>
                                 <th>Stat</th>
                                 <th>Value</th>
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody>
                             <tr>
                                 <td id="result1">&nbsp;</td>
                                 <td id="statType1">&nbsp;</td>
@@ -104,15 +128,15 @@
                                 <td>&nbsp;</td>
                                 <td id="valueTotal">&nbsp;</td>
                             </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </form>
-        </section>
-    </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </section>
+        </div>
     </center>
 </main>
 
-    <script src="script.js?v=1"></script>
+<script src="script.js?v=1"></script>
 </body>
 </html>

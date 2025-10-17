@@ -122,7 +122,7 @@ p {
 }
 
 /* ===== Random Agent Result Styling ===== */
-#randomAgentResult {
+#randomAgentResult, #gameRandomPokemon, #userBST, #optimisedBST {
     font-weight: bold;
     font-size: 1.2rem;
     color: #ffcc00;
@@ -428,4 +428,60 @@ footer {
     .column:last-child .card {
         max-width: 100%;
     }
+}
+
+/* Dropdown styling for #selectStats */
+#selectStats {
+    width: 100%;
+    max-width: 250px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: #f2f2f2;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    appearance: none; /* hide default arrow */
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+}
+
+/* Custom arrow using background image */
+#selectStats {
+    background-image: linear-gradient(45deg, transparent 50%, #fff 50%),
+                      linear-gradient(135deg, #fff 50%, transparent 50%);
+    background-position: calc(100% - 18px) center, calc(100% - 13px) center;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+}
+
+/* Hover effect */
+#selectStats:hover {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+/* Focus effect */
+#selectStats:focus {
+    border-color: #00c3ff;
+    box-shadow: 0 0 8px rgba(0, 195, 255, 0.6);
+}
+
+/* Dropdown options */
+#selectStats option {
+    background-color: #1e1e2a;
+    color: #f2f2f2;
+    font-size: 1rem;
+}
+
+#selectStats {
+    position: relative;
+    margin-bottom: 80px;
+}
+
+#selectStats option {
+    direction: ltr; /* ensures consistent render direction */
 }

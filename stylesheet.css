@@ -415,7 +415,7 @@ th {
     font-weight: bold;
 }
 
-#total td, #obstGameTotal td {
+#total td, #obstGameTotal td, #bstGameTotal {
     font-weight: bold;
     background: rgba(255, 255, 255, 0.1);
 }

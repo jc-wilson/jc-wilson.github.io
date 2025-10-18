@@ -1,6 +1,6 @@
 fetch("pokemon.json").then(response => {
     if (!response.ok) throw new Error("Failed to load JSON");
-    return response.json(); // Parse the JSON into a JavaScript object
+    return response.json();
 }).then(data => {
     let pokemonData = data;
 
@@ -10,7 +10,17 @@ fetch("pokemon.json").then(response => {
         )
     };
 
-    let pokemon = duplicatesRemoved();
+    const pokemon = duplicatesRemoved();
+
+    let pokemonTypes = ["Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy"]
+    let pokemonByType = []
+
+    for (let i = 0; i <= 17; i++) {
+        const poke = pokemon.filter(p => p.types.some(t => t === pokemonTypes[i]));
+        pokemonByType.push(poke)
+    }
+
+    console.log("pokemonByType:", pokemonByType)
 
     function randomPokemon() {
         const r = Math.floor(Math.random() * 1025) + 1;
@@ -30,6 +40,10 @@ fetch("pokemon.json").then(response => {
         const result = randomPokemon();
         const output = document.getElementById("result");
         output.textContent = `Your random pokemon is ${result}!`;
+        const imgUrl = `https://img.pokemondb.net/sprites/scarlet-violet/icon/${result.replace(" ", "-").replace("é", "e").replace(".", "").toLowerCase()}.png`
+        const html = `<img src="${imgUrl}"`;
+        const container = document.getElementById("image-container");
+        container.innerHTML = `<img src="${imgUrl}">`;
     };
 
     window.resetForm = function () {
@@ -54,7 +68,6 @@ fetch("pokemon.json").then(response => {
     window.bstButtonFunction = function () {
         console.log("Submit was pressed");
 
-        // Get all 6 Pokémon names
         let pokeOrder = []
         for (let i = 1; i <= 6; i++) {
             pokeOrder.push(document.getElementById(`poke${i}`).value)
@@ -91,7 +104,6 @@ fetch("pokemon.json").then(response => {
             );
         }
 
-        // Each stat index 0-5 needs a Pokémon assigned
         const allPermutations = permute([0, 1, 2, 3, 4, 5]); // indices of Pokémon
 
         let bestSum = -Infinity;
@@ -179,11 +191,14 @@ fetch("pokemon.json").then(response => {
     });
 
     window.bstGameFunction = function () {
+        document.querySelectorAll("#bstGame td[id^='bstName'], #bstGame td[id^='bstValue'], #bstGame td[id^='bstGameValueTotal'], #bstGame p[id^='optimisedBST']").forEach(td => {
+            td.innerHTML = "&nbsp;";
+        });
         document.getElementById("bstGame").reset()
         const select = document.getElementById("selectStats");
         for (let option of select.options) {
-                option.disabled = false;
-            }
+            option.disabled = false;
+        }
         let gameRandomPokemon = []
         for (let i = 1; i <= 6; i++) {
             gameRandomPokemon.push(randomPokemonFull())
@@ -191,23 +206,31 @@ fetch("pokemon.json").then(response => {
 
         gameRandomPokemon.push(gameRandomPokemon[5])
 
-        const gameRandomPokemonOutput2 = document.getElementById("gameRandomPokemon")
-        gameRandomPokemonOutput2.textContent = `${gameRandomPokemon[0].name}`
+        let j = 0
+        let gameRandomPokemonOutput = document.getElementById("gameRandomPokemon")
+        gameRandomPokemonOutput.textContent = `${gameRandomPokemon[0].name}`
+        let imgUrl = `https://img.pokemondb.net/sprites/scarlet-violet/icon/${gameRandomPokemon[0].name.replace(" ", "-").replace("é", "e").replace(".", "").toLowerCase()}.png`
+        const bstImageContainer = document.getElementById("image-container-gameRandomPokemon");
+        bstImageContainer.innerHTML = `<img src="${imgUrl}">`;
 
         console.log("gameRandomPokemon:", gameRandomPokemon)
         const selectElement = document.getElementById("selectStats")
-        let j = 0
         let userChoice = []
         let userStats = []
         selectElement.addEventListener("change", (event) => {
             const disableChoice = selectElement.selectedIndex
             document.getElementById("selectStats").options[`${disableChoice}`].disabled = true;
-            const gameRandomPokemonOutput = document.getElementById("gameRandomPokemon")
             gameRandomPokemonOutput.textContent = `${gameRandomPokemon[j + 1].name}`
+            imgUrl = `https://img.pokemondb.net/sprites/scarlet-violet/icon/${gameRandomPokemon[j + 1].name.replace(" ", "-").replace("é", "e").replace(".", "").toLowerCase()}.png`
+            bstImageContainer.innerHTML = `<img src="${imgUrl}">`;
             userChoice.push(selectElement.value)
             userStats.push(gameRandomPokemon[j][userChoice[j]])
+            let bstName = document.getElementById(`bstName${userChoice[j]}`)
+            let bstValue = document.getElementById(`bstValue${userChoice[j]}`)
             console.log("userChoice:", userChoice)
             console.log("userStats:", userStats)
+            bstName.textContent = `${gameRandomPokemon[j].name}`
+            bstValue.textContent = `${gameRandomPokemon[j][selectElement.value]}`
             j++
             if (j === 6) {
                 console.log("game finished")
@@ -227,14 +250,12 @@ fetch("pokemon.json").then(response => {
             );
         }
 
-        // Each stat index 0-5 needs a Pokémon assigned
         const allPermutations = permute([0, 1, 2, 3, 4, 5]); // indices of Pokémon
 
         let bestSum = -Infinity;
         let bestAssignment = [];
 
         allPermutations.forEach(assign => {
-            // assign[i] = Pokémon index for stat i
             const sum = assign.reduce((acc, pokeIndex, statIndex) => acc + Number(pokeValues[pokeIndex][statIndex]), 0);
             if (sum > bestSum) {
                 bestSum = sum;
@@ -244,10 +265,19 @@ fetch("pokemon.json").then(response => {
 
         function finishGame() {
             const sum1 = userStats.reduce((acc, current) => acc + Number(current), 0);
-            const userBST = document.getElementById("userBST")
-            const optimisedBST = document.getElementById("optimisedBST")
-            userBST.textContent = `Your BST: ${sum1}`
-            optimisedBST.textContent = `Optimised BST: ${bestSum}`
+            const userBST = document.getElementById("bstGameValueTotal")
+            const obstGameValueTotal = document.getElementById("obstGameValueTotal")
+            userBST.textContent = `${sum1}`
+            obstGameValueTotal.textContent = `${bestSum}`
+            console.log("bestAssigment:", bestAssignment)
+            const statMap = ["hp", "attack", "defense", "spAtk", "spDef", "speed"]
+
+            for (let i = 0; i <= 5; i++) {
+                const obstName = document.getElementById(`obstName${statMap[i]}`)
+                const obstValue = document.getElementById(`obstValue${statMap[i]}`)
+                obstName.textContent = `${gameRandomPokemon[bestAssignment[i]].name}`
+                obstValue.textContent = `${gameRandomPokemon[bestAssignment[i]][statMap[i]]}`
+            }
         }
     }
 })
@@ -255,7 +285,7 @@ fetch("pokemon.json").then(response => {
 
 fetch("valorant.json").then(response => {
     if (!response.ok) throw new Error("Failed to load JSON");
-    return response.json(); // Parse the JSON into a JavaScript object
+    return response.json();
 }).then(data => {
     const agentData = data
 

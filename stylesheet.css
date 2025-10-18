@@ -128,6 +128,24 @@ p {
     color: #ffcc00;
 }
 
+#image-container-gameRandomPokemon {
+    width: 64px;       /* fixed container size */
+    height: 100px;
+    display: flex;     /* enables flex layout */
+    justify-content: center; /* horizontal centering */
+    align-items: center;     /* vertical centering */
+    border: 1px solid transparent; /* optional for debugging */
+}
+
+#image-container {
+    width: 64px;       /* fixed container size */
+    height: 100px;
+    display: flex;     /* enables flex layout */
+    justify-content: center; /* horizontal centering */
+    align-items: center;     /* vertical centering */
+    border: 1px solid transparent; /* optional for debugging */
+}
+
 /* ===== Random Pokemon Result Styling ===== */
 #result {
     font-weight: bold;
@@ -397,7 +415,7 @@ th {
     font-weight: bold;
 }
 
-#total td {
+#total td, #obstGameTotal td {
     font-weight: bold;
     background: rgba(255, 255, 255, 0.1);
 }

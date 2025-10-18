@@ -191,7 +191,7 @@ fetch("pokemon.json").then(response => {
     });
 
     window.bstGameFunction = function () {
-        document.querySelectorAll("#bstGame td[id^='bstName'], #bstGame td[id^='bstValue'], #bstGame td[id^='bstGameValueTotal'], #bstGame p[id^='optimisedBST']").forEach(td => {
+        document.querySelectorAll("#bstGame td[id^='bstName'], #bstGame td[id^='bstValue'], #bstGame td[id^='bstGameValueTotal']").forEach(td => {
             td.innerHTML = "&nbsp;";
         });
         document.getElementById("bstGame").reset()

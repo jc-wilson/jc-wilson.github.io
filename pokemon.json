@@ -46,7 +46,7 @@
   },
   {
     "number": "0003",
-    "name": "Venusaur",
+    "name": "Venusaur Mega",
     "types": [
       "Grass",
       "Poison"
@@ -106,7 +106,7 @@
   },
   {
     "number": "0006",
-    "name": "Charizard",
+    "name": "Charizard Mega X",
     "types": [
       "Fire",
       "Dragon"
@@ -121,7 +121,7 @@
   },
   {
     "number": "0006",
-    "name": "Charizard",
+    "name": "Charizard Mega Y",
     "types": [
       "Fire",
       "Flying"
@@ -181,7 +181,7 @@
   },
   {
     "number": "0009",
-    "name": "Blastoise",
+    "name": "Blastoise Mega",
     "types": [
       "Water",
       ""
@@ -286,7 +286,7 @@
   },
   {
     "number": "0015",
-    "name": "Beedrill",
+    "name": "Beedrill Mega",
     "types": [
       "Bug",
       "Poison"
@@ -346,7 +346,7 @@
   },
   {
     "number": "0018",
-    "name": "Pidgeot",
+    "name": "Pidgeot Mega",
     "types": [
       "Normal",
       "Flying"
@@ -1291,7 +1291,7 @@
   },
   {
     "number": "0065",
-    "name": "Alakazam",
+    "name": "Alakazam Mega",
     "types": [
       "Psychic",
       ""
@@ -1621,7 +1621,7 @@
   },
   {
     "number": "0080",
-    "name": "Slowbro",
+    "name": "Slowbro Mega",
     "types": [
       "Water",
       "Psychic"
@@ -1906,7 +1906,7 @@
   },
   {
     "number": "0094",
-    "name": "Gengar",
+    "name": "Gengar Mega",
     "types": [
       "Ghost",
       "Poison"
@@ -2311,7 +2311,7 @@
   },
   {
     "number": "0115",
-    "name": "Kangaskhan",
+    "name": "Kangaskhan Mega",
     "types": [
       "Normal",
       ""
@@ -2521,7 +2521,7 @@
   },
   {
     "number": "0127",
-    "name": "Pinsir",
+    "name": "Pinsir Mega",
     "types": [
       "Bug",
       "Flying"
@@ -2626,7 +2626,7 @@
   },
   {
     "number": "0130",
-    "name": "Gyarados",
+    "name": "Gyarados Mega",
     "types": [
       "Water",
       "Dark"
@@ -2836,7 +2836,7 @@
   },
   {
     "number": "0142",
-    "name": "Aerodactyl",
+    "name": "Aerodactyl Mega",
     "types": [
       "Rock",
       "Flying"
@@ -3016,7 +3016,7 @@
   },
   {
     "number": "0150",
-    "name": "Mewtwo",
+    "name": "Mewtwo Mega X",
     "types": [
       "Psychic",
       "Fighting"
@@ -3031,7 +3031,7 @@
   },
   {
     "number": "0150",
-    "name": "Mewtwo",
+    "name": "Mewtwo Mega Y",
     "types": [
       "Psychic",
       ""
@@ -3526,7 +3526,7 @@
   },
   {
     "number": "0181",
-    "name": "Ampharos",
+    "name": "Ampharos Mega",
     "types": [
       "Electric",
       "Dragon"
@@ -3976,7 +3976,7 @@
   },
   {
     "number": "0208",
-    "name": "Steelix",
+    "name": "Steelix Mega",
     "types": [
       "Steel",
       "Ground"
@@ -4066,7 +4066,7 @@
   },
   {
     "number": "0212",
-    "name": "Scizor",
+    "name": "Scizor Mega",
     "types": [
       "Bug",
       "Steel"
@@ -4111,7 +4111,7 @@
   },
   {
     "number": "0214",
-    "name": "Heracross",
+    "name": "Heracross Mega",
     "types": [
       "Bug",
       "Fighting"
@@ -4381,7 +4381,7 @@
   },
   {
     "number": "0229",
-    "name": "Houndoom",
+    "name": "Houndoom Mega",
     "types": [
       "Dark",
       "Fire"
@@ -4681,7 +4681,7 @@
   },
   {
     "number": "0248",
-    "name": "Tyranitar",
+    "name": "Tyranitar Mega",
     "types": [
       "Rock",
       "Dark"
@@ -4786,7 +4786,7 @@
   },
   {
     "number": "0254",
-    "name": "Sceptile",
+    "name": "Sceptile Mega",
     "types": [
       "Grass",
       "Dragon"
@@ -4846,7 +4846,7 @@
   },
   {
     "number": "0257",
-    "name": "Blaziken",
+    "name": "Blaziken Mega",
     "types": [
       "Fire",
       "Fighting"
@@ -4906,7 +4906,7 @@
   },
   {
     "number": "0260",
-    "name": "Swampert",
+    "name": "Swampert Mega",
     "types": [
       "Water",
       "Ground"
@@ -5281,7 +5281,7 @@
   },
   {
     "number": "0282",
-    "name": "Gardevoir",
+    "name": "Gardevoir Mega",
     "types": [
       "Psychic",
       "Fairy"
@@ -5596,7 +5596,7 @@
   },
   {
     "number": "0302",
-    "name": "Sableye",
+    "name": "Sableye Mega",
     "types": [
       "Dark",
       "Ghost"
@@ -5626,7 +5626,7 @@
   },
   {
     "number": "0303",
-    "name": "Mawile",
+    "name": "Mawile Mega",
     "types": [
       "Steel",
       "Fairy"
@@ -5686,7 +5686,7 @@
   },
   {
     "number": "0306",
-    "name": "Aggron",
+    "name": "Aggron Mega",
     "types": [
       "Steel",
       ""
@@ -5731,7 +5731,7 @@
   },
   {
     "number": "0308",
-    "name": "Medicham",
+    "name": "Medicham Mega",
     "types": [
       "Fighting",
       "Psychic"
@@ -5776,7 +5776,7 @@
   },
   {
     "number": "0310",
-    "name": "Manectric",
+    "name": "Manectric Mega",
     "types": [
       "Electric",
       ""
@@ -5926,7 +5926,7 @@
   },
   {
     "number": "0319",
-    "name": "Sharpedo",
+    "name": "Sharpedo Mega",
     "types": [
       "Water",
       "Dark"
@@ -6001,7 +6001,7 @@
   },
   {
     "number": "0323",
-    "name": "Camerupt",
+    "name": "Camerupt Mega",
     "types": [
       "Fire",
       "Ground"
@@ -6181,7 +6181,7 @@
   },
   {
     "number": "0334",
-    "name": "Altaria",
+    "name": "Altaria Mega",
     "types": [
       "Dragon",
       "Fairy"
@@ -6541,7 +6541,7 @@
   },
   {
     "number": "0354",
-    "name": "Banette",
+    "name": "Banette Mega",
     "types": [
       "Ghost",
       ""
@@ -6631,7 +6631,7 @@
   },
   {
     "number": "0359",
-    "name": "Absol",
+    "name": "Absol Mega",
     "types": [
       "Dark",
       ""
@@ -6691,7 +6691,7 @@
   },
   {
     "number": "0362",
-    "name": "Glalie",
+    "name": "Glalie Mega",
     "types": [
       "Ice",
       ""
@@ -6871,7 +6871,7 @@
   },
   {
     "number": "0373",
-    "name": "Salamence",
+    "name": "Salamence Mega",
     "types": [
       "Dragon",
       "Flying"
@@ -6931,7 +6931,7 @@
   },
   {
     "number": "0376",
-    "name": "Metagross",
+    "name": "Metagross Mega",
     "types": [
       "Steel",
       "Psychic"
@@ -7006,7 +7006,7 @@
   },
   {
     "number": "0380",
-    "name": "Latias",
+    "name": "Latias Mega",
     "types": [
       "Dragon",
       "Psychic"
@@ -7036,7 +7036,7 @@
   },
   {
     "number": "0381",
-    "name": "Latios",
+    "name": "Latios Mega",
     "types": [
       "Dragon",
       "Psychic"
@@ -7126,7 +7126,7 @@
   },
   {
     "number": "0384",
-    "name": "Rayquaza",
+    "name": "Rayquaza Mega",
     "types": [
       "Dragon",
       "Flying"
@@ -7906,7 +7906,7 @@
   },
   {
     "number": "0428",
-    "name": "Lopunny",
+    "name": "Lopunny Mega",
     "types": [
       "Normal",
       "Fighting"
@@ -8176,7 +8176,7 @@
   },
   {
     "number": "0445",
-    "name": "Garchomp",
+    "name": "Garchomp Mega",
     "types": [
       "Dragon",
       "Ground"
@@ -8236,7 +8236,7 @@
   },
   {
     "number": "0448",
-    "name": "Lucario",
+    "name": "Lucario Mega",
     "types": [
       "Fighting",
       "Steel"
@@ -8431,7 +8431,7 @@
   },
   {
     "number": "0460",
-    "name": "Abomasnow",
+    "name": "Abomasnow Mega",
     "types": [
       "Grass",
       "Ice"
@@ -8671,7 +8671,7 @@
   },
   {
     "number": "0475",
-    "name": "Gallade",
+    "name": "Gallade Mega",
     "types": [
       "Psychic",
       "Fighting"
@@ -9676,7 +9676,7 @@
   },
   {
     "number": "0531",
-    "name": "Audino",
+    "name": "Audino Mega",
     "types": [
       "Normal",
       "Fairy"
@@ -13006,7 +13006,7 @@
   },
   {
     "number": "0719",
-    "name": "Diancie",
+    "name": "Diancie Mega",
     "types": [
       "Rock",
       "Fairy"

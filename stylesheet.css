@@ -210,6 +210,58 @@ button:active {
     margin: 1rem 0;
 }
 
+.button-group2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  grid-template-rows: repeat(2, 1fr);    /* 2 equal rows */
+  gap: 10px;                             /* spacing between buttons */
+  width: 100%;
+  max-width: 500px;                      /* overall group width */
+  height: 150px;                         /* fixes equal button height */
+  margin: 0 auto;                        /* centers the group */
+}
+
+.button-group2 button {
+  width: 100%;
+  height: 100%;                          /* fill the grid cell */
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;               /* centers long text vertically/horizontally */
+  text-wrap: balance;                    /* improves line wrapping for long text */
+  padding: 6px;                          /* optional padding */
+}
+
+.button-group2 button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.button-group2 button:active {
+  transform: scale(0.97);
+}
+
+.button-group2 button:disabled {
+    background-color: #ccc;  /* light grey background */
+    color: #666;             /* darker grey text */
+    border: 1px solid #999;  /* optional border for clarity */
+    cursor: not-allowed;     /* show the "disabled" cursor */
+    opacity: 0.7;            /* slightly faded */
+}
+
+/*  gap:4 margin:5   */
+
 /* Pokémon input grid */
 .pokemon-inputs {
     display: grid;
@@ -449,7 +501,7 @@ footer {
 }
 
 /* Dropdown styling for #selectStats */
-#selectStats {
+#selectStats, #filterByType, #filterByGen {
     width: 100%;
     max-width: 250px;
     padding: 10px 14px;
@@ -468,7 +520,7 @@ footer {
 }
 
 /* Custom arrow using background image */
-#selectStats {
+#selectStats, #filterByType, #filterByGen {
     background-image: linear-gradient(45deg, transparent 50%, #fff 50%),
                       linear-gradient(135deg, #fff 50%, transparent 50%);
     background-position: calc(100% - 18px) center, calc(100% - 13px) center;
@@ -477,29 +529,29 @@ footer {
 }
 
 /* Hover effect */
-#selectStats:hover {
+#selectStats:hover, #filterByType:hover, #filterByGen:hover {
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
 }
 
 /* Focus effect */
-#selectStats:focus {
+#selectStats:focus, #filterByType:focus, #filterByGen:focus {
     border-color: #00c3ff;
     box-shadow: 0 0 8px rgba(0, 195, 255, 0.6);
 }
 
 /* Dropdown options */
-#selectStats option {
+#selectStats option, #filterByType option, #filterByGen option {
     background-color: #1e1e2a;
     color: #f2f2f2;
     font-size: 1rem;
 }
 
-#selectStats {
+#selectStats, #filterByType, #filterByGen {
     position: relative;
-    margin-bottom: 80px;
+    margin-bottom: 0px;
 }
 
-#selectStats option {
+#selectStats option, #filterByType option, #filterByGen option {
     direction: ltr; /* ensures consistent render direction */
 }

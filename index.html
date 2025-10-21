@@ -20,20 +20,54 @@
         <section class="card">
             <center>
                 <h2>Pokemon BST Game</h2>
+                <label for="filterByType">Filter Type:</label>
+                <select name="filterByType" id="filterByType" autocomplete="off">
+                    <option value="all">All Types</option>
+                    <option value="0">Normal</option>
+                    <option value="1">Fire</option>
+                    <option value="2">Water</option>
+                    <option value="3">Electric</option>
+                    <option value="4">Grass</option>
+                    <option value="5">Ice</option>
+                    <option value="6">Fighting</option>
+                    <option value="7">Poison</option>
+                    <option value="8">Ground</option>
+                    <option value="9">Flying</option>
+                    <option value="10">Psychic</option>
+                    <option value="11">Bug</option>
+                    <option value="12">Rock</option>
+                    <option value="13">Ghost</option>
+                    <option value="14">Dragon</option>
+                    <option value="15">Dark</option>
+                    <option value="16">Steel</option>
+                    <option value="17">Fairy</option>
+                </select>
+                <label for="filterByGen">Filter Generation:</label>
+                <select name="filterByGen" id="filterByGen" autocomplete="off">
+                    <option value="all">All Generations</option>
+                    <option value="1">Gen 1</option>
+                    <option value="2">Gen 2</option>
+                    <option value="3">Gen 3</option>
+                    <option value="4">Gen 4</option>
+                    <option value="5">Gen 5</option>
+                    <option value="6">Gen 6</option>
+                    <option value="7">Gen 7</option>
+                    <option value="8">Gen 8</option>
+                    <option value="9">Gen 9</option>
+                </select>
                 <button type="button" id="playGame" onclick="bstGameFunction()">Play Game</button>
                 <form id="bstGame">
                     <p id="gameRandomPokemon">&nbsp;</p>
                     <div id="image-container-gameRandomPokemon"></div>
                     <label for="selectStats">Choose Stat</label>
-                    <select name="selectStats" id="selectStats">
-                        <option hidden disabled selected value> -- select an option --</option>
-                        <option value="hp">HP</option>
-                        <option value="attack">Attack</option>
-                        <option value="defense">Defense</option>
-                        <option value="spAtk">Special Attack</option>
-                        <option value="spDef">Special Defense</option>
-                        <option value="speed">Speed</option>
-                    </select>
+                    <div class="button-group2" id="bstGameButtonGroup">
+                        <button id="bstGameHPButton" value="hp">HP</button>
+                        <button id="bstGameAttackButton" value="attack">Attack</button>
+                        <button id="bstGameDefenseButton" value="defense">Defense</button>
+                        <button id="bstGameSpAttackButton" value="spAtk">Sp. Atk</button>
+                        <button id="bstGameSpDefenseButton" value="spDef">Sp. Def</button>
+                        <button id="bstGameSpeedButton" value="speed">Speed</button>
+                    </div>
                     <p id="userBST">Your BST:</p>
                     <div class="table-container">
                         <table>
@@ -150,7 +184,7 @@
             </section>
 
             <section class="card">
-                <h2>🧠 Random Agent</h2>
+                <h2>🧠 Random Valorant Agent</h2>
                 <button id="randomAgentBtn" onclick="randomAgentBtn()">Generate Random Agent</button>
                 <p id="randomAgentResult">&nbsp;</p>
             </section>
@@ -163,7 +197,7 @@
             </section>
             <section class="card">
                 <h2>📊 Team BST Calculator</h2>
-                <p>Enter up to six Pokémon to calculate their total base stat total (BST).</p>
+                <p>Enter up to six Pokémon to calculate their optimised base stat total (BST).</p>
 
                 <form id="main-form">
                     <div class="pokemon-inputs">

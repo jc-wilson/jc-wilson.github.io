@@ -21,8 +21,11 @@ fetch("pokemon.json").then(response => {
     }
 
     const bstFilterByTypeElement = document.getElementById("filterByType")
+    const bstFilterByGenElement = document.getElementById("filterByGen")
+
     let bstFilterPokemon = pokemon
     bstFilterByTypeElement.addEventListener("change", (event) => {
+        bstFilterByGenElement.selectedIndex = 0;
         if (bstFilterByTypeElement.value != "all") {
             bstFilterPokemon = pokemonByType[`${bstFilterByTypeElement.value}`]
         };
@@ -37,8 +40,8 @@ fetch("pokemon.json").then(response => {
         pokemonByGen.push(poke)
     }
 
-    const bstFilterByGenElement = document.getElementById("filterByGen")
     bstFilterByGenElement.addEventListener("change", (event) => {
+        bstFilterByTypeElement.selectedIndex = 0;
         if (bstFilterByGenElement.value != "all") {
             bstFilterPokemon = pokemonByGen[`${bstFilterByGenElement.value}`]
         };

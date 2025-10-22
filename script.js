@@ -28,7 +28,8 @@ fetch("pokemon.json").then(response => {
         bstFilterByGenElement.selectedIndex = 0;
         if (bstFilterByTypeElement.value != "all") {
             bstFilterPokemon = pokemonByType[`${bstFilterByTypeElement.value}`]
-        };
+        }
+        ;
     });
 
     let pokemonGens = [0, 151, 251, 386, 493, 649, 721, 809, 905, 1025]
@@ -44,7 +45,8 @@ fetch("pokemon.json").then(response => {
         bstFilterByTypeElement.selectedIndex = 0;
         if (bstFilterByGenElement.value != "all") {
             bstFilterPokemon = pokemonByGen[`${bstFilterByGenElement.value}`]
-        };
+        }
+        ;
     });
 
     function randomPokemon() {
@@ -126,6 +128,9 @@ fetch("pokemon.json").then(response => {
         let bestSum = -Infinity;
         let bestAssignment = [];
 
+        let worstSum = Infinity;
+        let worstAssignment = [];
+
         allPermutations.forEach(assign => {
             // assign[i] = Pokémon index for stat i
             const sum = assign.reduce((acc, pokeIndex, statIndex) => acc + Number(pokeValues[pokeIndex][statIndex]), 0);
@@ -133,20 +138,46 @@ fetch("pokemon.json").then(response => {
                 bestSum = sum;
                 bestAssignment = assign;
             }
+            ;
+            if (sum < worstSum) {
+                worstSum = sum;
+                worstAssignment = assign;
+            }
+            ;
         });
 
         let valueOutput = []
+        const calcMinMaxToggle = document.getElementById("calcMinMaxToggle")
 
-        pokeValues.forEach((p, i) => {
-            valueOutput.push(bestAssignment.map(index => p[index]));
-        });
+        console.log("calcMinMaxToggle:", calcMinMaxToggle)
+        if (calcMinMaxToggle.checked) {
+            pokeValues.forEach((p, i) => {
+                valueOutput.push(bestAssignment.map(index => p[index]));
+            });
 
-        valueOutput = bestAssignment.map(index => valueOutput[index])
+            valueOutput = bestAssignment.map(index => valueOutput[index])
 
-        pokeHTML = bestAssignment.map(index => pokeHTML[index]);
-        pokeValues2 = bestAssignment.map(index => pokeValues2[index]);
+            pokeHTML = bestAssignment.map(index => pokeHTML[index]);
+            pokeValues2 = bestAssignment.map(index => pokeValues2[index]);
 
-        bestAssignment = bestAssignment.map(index => pokeNames[index]);
+            bestAssignment = bestAssignment.map(index => pokeNames[index]);
+
+        } else {
+            pokeValues.forEach((p, i) => {
+                valueOutput.push(worstAssignment.map(index => p[index]));
+            });
+
+            valueOutput = worstAssignment.map(index => valueOutput[index])
+
+            pokeHTML = worstAssignment.map(index => pokeHTML[index]);
+            pokeValues2 = worstAssignment.map(index => pokeValues2[index]);
+
+            bestAssignment = worstAssignment.map(index => pokeNames[index]);
+
+            bestSum = worstSum
+
+            console.log("worstAssigment:", worstAssignment)
+        }
 
         for (let i = 1; i <= 6; i++) {
             const output = document.getElementById(`result${i}`)
@@ -195,6 +226,9 @@ fetch("pokemon.json").then(response => {
 
     window.bstGameFunction = function () {
         document.querySelectorAll("#bstGame td[id^='bstName'], #bstGame td[id^='bstValue'], #bstGame td[id^='bstGameValueTotal']").forEach(td => {
+            td.innerHTML = "&nbsp;";
+        });
+        document.querySelectorAll("#bstGame td[id^='obstName'], #bstGame td[id^='obstValue'], #bstGame td[id^='obstGameValueTotal']").forEach(td => {
             td.innerHTML = "&nbsp;";
         });
         const statMap = ["hp", "attack", "defense", "spAtk", "spDef", "speed"]
@@ -270,56 +304,56 @@ fetch("pokemon.json").then(response => {
         let bestSum = -Infinity;
         let bestAssignment = [];
 
+        let worstSum = Infinity;
+        let worstAssignment = []
+
         allPermutations.forEach(assign => {
             const sum = assign.reduce((acc, pokeIndex, statIndex) => acc + Number(pokeValues[pokeIndex][statIndex]), 0);
             if (sum > bestSum) {
                 bestSum = sum;
                 bestAssignment = assign;
             }
+            ;
+            if (sum < worstSum) {
+                worstSum = sum;
+                worstAssignment = assign;
+            }
+            ;
         });
 
         function finishGame() {
-            const sum1 = userStats.reduce((acc, current) => acc + Number(current), 0);
-            const userBST = document.getElementById("bstGameValueTotal")
-            const obstGameValueTotal = document.getElementById("obstGameValueTotal")
-            userBST.textContent = `${sum1}`
-            obstGameValueTotal.textContent = `${bestSum}`
+            const gameMinMaxToggle = document.getElementById("gameMinMaxToggle")
+            if (gameMinMaxToggle.checked) {
+                const sum1 = userStats.reduce((acc, current) => acc + Number(current), 0);
+                const userBST = document.getElementById("bstGameValueTotal")
+                const obstGameValueTotal = document.getElementById("obstGameValueTotal")
+                userBST.textContent = `${sum1}`
+                obstGameValueTotal.textContent = `${bestSum}`
 
-            for (let i = 0; i <= 5; i++) {
-                const obstName = document.getElementById(`obstName${statMap[i]}`)
-                const obstValue = document.getElementById(`obstValue${statMap[i]}`)
-                obstName.textContent = `${gameRandomPokemon[bestAssignment[i]].name}`
-                obstValue.textContent = `${gameRandomPokemon[bestAssignment[i]][statMap[i]]}`
+                for (let i = 0; i <= 5; i++) {
+                    const obstName = document.getElementById(`obstName${statMap[i]}`)
+                    const obstValue = document.getElementById(`obstValue${statMap[i]}`)
+                    obstName.textContent = `${gameRandomPokemon[bestAssignment[i]].name}`
+                    obstValue.textContent = `${gameRandomPokemon[bestAssignment[i]][statMap[i]]}`
+                }
+            } else {
+                const sum1 = userStats.reduce((acc, current) => acc + Number(current), 0);
+                const userBST = document.getElementById("bstGameValueTotal")
+                const obstGameValueTotal = document.getElementById("obstGameValueTotal")
+                userBST.textContent = `${sum1}`
+                obstGameValueTotal.textContent = `${worstSum}`
+
+                for (let i = 0; i <= 5; i++) {
+                    const obstName = document.getElementById(`obstName${statMap[i]}`)
+                    const obstValue = document.getElementById(`obstValue${statMap[i]}`)
+                    obstName.textContent = `${gameRandomPokemon[worstAssignment[i]].name}`
+                    obstValue.textContent = `${gameRandomPokemon[worstAssignment[i]][statMap[i]]}`
+                }
             }
         }
     }
 })
 ;
-
-fetch("valorant.json").then(response => {
-    if (!response.ok) throw new Error("Failed to load JSON");
-    return response.json();
-}).then(data => {
-    const agentData = data
-
-    function randomAgent() {
-        const r = Math.floor(Math.random() * 28) + 1;
-        if (r === 8) {
-            randomAgent();
-            r = null;
-        }
-        ;
-        const p = agentData.find(p => Number(p["No."]) === r);
-        if (p) return p.Agent;
-        return null;
-    };
-
-    window.randomAgentBtn = function () {
-        const result = randomAgent();
-        const output = document.getElementById("randomAgentResult");
-        output.textContent = `Your random agent is ${result}!`;
-    }
-});
 
 
 

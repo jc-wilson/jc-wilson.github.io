@@ -17,6 +17,7 @@ center {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    width: 100%;
 }
 
 /* ===== Buttons ===== */
@@ -72,7 +73,7 @@ form {
     border-radius: 16px;
     backdrop-filter: blur(6px);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-    width: 340px;
+    width: 90%;
 }
 
 label {
@@ -352,7 +353,7 @@ h1, h2 {
 }
 
 /* Make BST Calculator card larger */
-.column:last-child .card {
+.row:last-child .card {
     max-width: 700px;
     width: 100%;
     margin: 0 auto;
@@ -495,7 +496,7 @@ footer {
         flex-direction: column;
     }
 
-    .column:last-child .card {
+    .row:last-child .card {
         max-width: 100%;
     }
 }
@@ -554,4 +555,332 @@ footer {
 
 #selectStats option, #filterByType option, #filterByGen option {
     direction: ltr; /* ensures consistent render direction */
+}
+
+.onOffToggle {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 34px;
+  cursor: pointer;
+}
+
+/* Hide checkbox */
+.onOffToggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Track / background */
+.onOffToggle .slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 34px;
+  transition: all 0.4s ease;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5),
+              0 0 6px rgba(255,255,255,0.05);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;  /* centers the knob vertically */
+}
+
+/* Knob (circle) */
+.onOffToggle .slider::before {
+  content: "";
+  height: 26px;
+  width: 26px;
+  background: linear-gradient(135deg, #2a2a3d, #1e1e2f);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.15),
+              inset 0 0 4px rgba(0, 0, 0, 0.6);
+  transition: all 0.4s ease;
+  transform: translateX(4px); /* start position */
+}
+
+/* Checked state */
+.onOffToggle input:checked + .slider {
+  background: linear-gradient(135deg, #ffcc00, #ff6b00);
+  border-color: #ffcc00;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.5),
+              0 0 20px rgba(255, 107, 0, 0.4);
+}
+
+/* Move knob when checked */
+.onOffToggle input:checked + .slider::before {
+  transform: translateX(70px); /* perfect slide distance */
+  background: #1e1e2f;
+  border-color: #ffcc00;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.6),
+              inset 0 0 6px rgba(255, 255, 255, 0.2);
+}
+
+/* Hover glow */
+.onOffToggle:hover .slider {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1),
+              0 0 15px rgba(255, 204, 0, 0.15);
+}
+
+.onOffToggle .slider::after {
+  content: "Min BST";
+  position: absolute;
+  right: 10px;
+  font-size: 0.8rem;
+  color: #ccc;
+  transition: all 0.3s ease;
+}
+
+.onOffToggle input:checked + .slider::after {
+  content: "Max BST";
+  left: 10px;
+  right: auto;
+  color: #1e1e2f; /* dark text for bright background */
+}
+
+/* ===== NAVIGATION BAR ===== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  padding: 12px 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nav-logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #ffcc00;
+  text-decoration: none;
+  transition: text-shadow 0.3s ease;
+}
+
+.nav-logo:hover {
+  text-shadow: 0 0 8px rgba(255, 204, 0, 0.7);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-item {
+  color: #f8f8f8;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-item:hover {
+  color: #ffcc00;
+  text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+/* Responsive Nav (for mobile) */
+@media (max-width: 700px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.main-layout-rows {
+    display: flex;
+    flex-direction: column; /* stack items vertically */
+    gap: 2.5rem;            /* same spacing as your columns */
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: stretch;   /* ensures cards fill width nicely */
+    justify-content: flex-start;
+}
+
+.row {
+    display: flex;
+    flex-direction: row; /* each row can contain multiple elements if needed */
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.row .card {
+    flex: 1; /* make cards equal width within the row */
+}
+
+.table-row {
+    display: flex;
+    justify-content: center;   /* centers them horizontally */
+    align-items: flex-start;   /* top-aligns tables */
+    gap: 2rem;                 /* spacing between tables */
+    flex-wrap: wrap;           /* lets them stack on smaller screens */
+    margin-top: 2rem;
+}
+
+/* Optional: make each table share space evenly */
+.table-row table {
+    flex: 1;
+    min-width: 250px;          /* prevents tables from getting too narrow */
+    max-width: 500px;          /* keeps them readable */
+}
+
+.table-title {
+  background: linear-gradient(135deg, #ffcc00, #ff9900);
+  color: #1e1e2f;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* === LAYOUT FIXES === */
+/* 1️⃣ Fix .main-layout-rows so it uses horizontal space better */
+.main-layout-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* more breathing room between rows */
+  max-width: 1300px; /* use more horizontal space */
+  margin: 0 auto;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 0 2rem; /* prevent cards from touching the screen edges */
+}
+
+/* Each row horizontally aligns cards side by side */
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* centers rows horizontally */
+  align-items: flex-start; /* align top edges evenly */
+  gap: 2rem;
+  flex-wrap: wrap; /* stacks on smaller screens */
+  width: 100%;
+}
+
+/* Make each card share available width evenly */
+.row .card {
+  flex: 1 1 30%; /* cards take equal space, wrap as needed */
+  min-width: 300px;
+  max-width: 100%;
+}
+
+/* 2️⃣ Filters section - arrange toggle + dropdowns side-by-side */
+.filters-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* wrap on smaller screens */
+  gap: 1rem;
+  margin: 1rem 0 1.5rem 0;
+}
+
+/* Make dropdowns consistent width and aligned nicely */
+.filters-row select {
+  width: 200px;
+}
+
+.filters-row label {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+/* 3️⃣ Tables side-by-side improvements */
+.table-row {
+  display: flex;
+  justify-content: space-between; /* evenly spaced horizontally */
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap; /* stack when too narrow */
+  width: 100%;
+  margin-top: 2rem;
+}
+
+/* Each table container should expand evenly */
+.table-row .table-container {
+  flex: 1 1 45%;
+  max-width: 600px;
+}
+
+/* Table titles (your new <th colspan=3> headers) */
+.table-title {
+  background: linear-gradient(135deg, #ffcc00, #ff9900);
+  color: #1e1e2f;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 4️⃣ Responsive tweaks for smaller screens */
+@media (max-width: 1000px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .table-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .table-row .table-container {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .filters-row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Force labels above selects without breaking row layout */
+.filters-row {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  gap: 1.5rem !important;
+  flex-wrap: wrap;
+}
+
+/* Each label + select pair stacks internally but behaves as a single flex item */
+.filter-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 4px !important;
+  flex: 0 0 auto !important;
+}
+
+/* Keep dropdowns same width as before */
+.filter-item select {
+  width: 220px !important;
+  min-width: 220px !important;
+  max-width: 220px !important;
+}
+
+/* Make labels look good above selects */
+.filter-item label {
+  font-weight: bold !important;
+  font-size: 0.9rem !important;
+  margin-bottom: 2px !important;
 }

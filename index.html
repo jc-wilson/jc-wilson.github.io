@@ -5,56 +5,76 @@
     <title>Pokédex Console</title>
     <link rel="icon" type="image/x-icon" href="/favicon.jpg">
     <link rel="stylesheet" href="stylesheet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">Pokédex Console</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="pages/valorant.html" class="nav-item">Valorant</a>
+        </div>
+    </div>
+</nav>
+
 <header>
     <h1>Pokédex Console</h1>
-    <p class="subtitle">Analyze, Randomize, and Explore Pokémon Stats</p>
+    <p class="subtitle">Play with and calculate Pokemon Base Stat Totals.</p>
 </header>
 
-<main class="main-layout">
-    <!-- Left column -->
-    <div class="column">
-
-        <section class="card">
-            <center>
+<main class="main-layout-rows">
+    <!-- 1st row -->
+    <div class="row">
+        <center>
+            <section class="card">
                 <h2>Pokemon BST Game</h2>
-                <label for="filterByType">Filter Type:</label>
-                <select name="filterByType" id="filterByType" autocomplete="off">
-                    <option value="all">All Types</option>
-                    <option value="0">Normal</option>
-                    <option value="1">Fire</option>
-                    <option value="2">Water</option>
-                    <option value="3">Electric</option>
-                    <option value="4">Grass</option>
-                    <option value="5">Ice</option>
-                    <option value="6">Fighting</option>
-                    <option value="7">Poison</option>
-                    <option value="8">Ground</option>
-                    <option value="9">Flying</option>
-                    <option value="10">Psychic</option>
-                    <option value="11">Bug</option>
-                    <option value="12">Rock</option>
-                    <option value="13">Ghost</option>
-                    <option value="14">Dragon</option>
-                    <option value="15">Dark</option>
-                    <option value="16">Steel</option>
-                    <option value="17">Fairy</option>
-                </select>
-                <label for="filterByGen">Filter Generation:</label>
-                <select name="filterByGen" id="filterByGen" autocomplete="off">
-                    <option value="all">All Generations</option>
-                    <option value="1">Gen 1</option>
-                    <option value="2">Gen 2</option>
-                    <option value="3">Gen 3</option>
-                    <option value="4">Gen 4</option>
-                    <option value="5">Gen 5</option>
-                    <option value="6">Gen 6</option>
-                    <option value="7">Gen 7</option>
-                    <option value="8">Gen 8</option>
-                    <option value="9">Gen 9</option>
-                </select>
+                <div class="filters-row">
+                    <label for="gameMinMaxToggle" class="onOffToggle">
+                        <input type="checkbox" name="gameMinMaxToggle" id="gameMinMaxToggle" autocomplete="off" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <div class="filter-item">
+                        <label for="filterByType">Filter Type:</label>
+                        <select name="filterByType" id="filterByType" autocomplete="off">
+                            <option value="all">All Types</option>
+                            <option value="0">Normal</option>
+                            <option value="1">Fire</option>
+                            <option value="2">Water</option>
+                            <option value="3">Electric</option>
+                            <option value="4">Grass</option>
+                            <option value="5">Ice</option>
+                            <option value="6">Fighting</option>
+                            <option value="7">Poison</option>
+                            <option value="8">Ground</option>
+                            <option value="9">Flying</option>
+                            <option value="10">Psychic</option>
+                            <option value="11">Bug</option>
+                            <option value="12">Rock</option>
+                            <option value="13">Ghost</option>
+                            <option value="14">Dragon</option>
+                            <option value="15">Dark</option>
+                            <option value="16">Steel</option>
+                            <option value="17">Fairy</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label for="filterByGen">Filter Generation:</label>
+                        <select name="filterByGen" id="filterByGen" autocomplete="off">
+                            <option value="all">All Generations</option>
+                            <option value="1">Gen 1</option>
+                            <option value="2">Gen 2</option>
+                            <option value="3">Gen 3</option>
+                            <option value="4">Gen 4</option>
+                            <option value="5">Gen 5</option>
+                            <option value="6">Gen 6</option>
+                            <option value="7">Gen 7</option>
+                            <option value="8">Gen 8</option>
+                            <option value="9">Gen 9</option>
+                        </select>
+                    </div>
+                </div>
                 <button type="button" id="playGame" onclick="bstGameFunction()">Play Game</button>
                 <form id="bstGame">
                     <p id="gameRandomPokemon">&nbsp;</p>
@@ -68,112 +88,118 @@
                         <button id="bstGameSpDefenseButton" value="spDef">Sp. Def</button>
                         <button id="bstGameSpeedButton" value="speed">Speed</button>
                     </div>
-                    <p id="userBST">Your BST:</p>
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>Pokémon</th>
-                                <th>Stat</th>
-                                <th>Value</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td id="bstNamehp">&nbsp;</td>
-                                <td id="bstStathp">HP</td>
-                                <td id="bstValuehp">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td id="bstNameattack">&nbsp;</td>
-                                <td id="bstStatattack">Attack</td>
-                                <td id="bstValueattack">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td id="bstNamedefense">&nbsp;</td>
-                                <td id="bstStatdefense">Defense</td>
-                                <td id="bstValuedefense">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td id="bstNamespAtk">&nbsp;</td>
-                                <td id="bstStatspAtk">Special Attack</td>
-                                <td id="bstValuespAtk">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td id="bstNamespDef">&nbsp;</td>
-                                <td id="bstStatspDef">Special Defense</td>
-                                <td id="bstValuespDef">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td id="bstNamespeed">&nbsp;</td>
-                                <td id="bstStatspeed">Speed</td>
-                                <td id="bstValuespeed">&nbsp;</td>
-                            </tr>
-                            <tr id="bstGameTotal">
-                                <td><strong>Total</strong></td>
-                                <td>&nbsp;</td>
-                                <td id="bstGameValueTotal"><strong>&nbsp;</strong></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p id="optimisedBST">Optimised BST:</p>
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>Pokémon</th>
-                                <th>Stat</th>
-                                <th>Value</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td id="obstNamehp">&nbsp;</td>
-                                <td id="obstStathp">HP</td>
-                                <td id="obstValuehp">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td id="obstNameattack">&nbsp;</td>
-                                <td id="obstStatattack">Attack</td>
-                                <td id="obstValueattack">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td id="obstNamedefense">&nbsp;</td>
-                                <td id="obstStatdefense">Defense</td>
-                                <td id="obstValuedefense">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td id="obstNamespAtk">&nbsp;</td>
-                                <td id="obstStatspAtk">Special Attack</td>
-                                <td id="obstValuespAtk">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td id="obstNamespDef">&nbsp;</td>
-                                <td id="obstStatspDef">Special Defense</td>
-                                <td id="obstValuespDef">&nbsp;</td>
-                            </tr>
-                            <tr>
-                                <td id="obstNamespeed">&nbsp;</td>
-                                <td id="obstStatspeed">Speed</td>
-                                <td id="obstValuespeed">&nbsp;</td>
-                            </tr>
-                            <tr id="obstGameTotal">
-                                <td><strong>Total</strong></td>
-                                <td>&nbsp;</td>
-                                <td id="obstGameValueTotal"><strong>&nbsp;</strong></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                    <div class="table-row">
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th colspan="3" class="table-title">YOUR BST</th>
+                                </tr>
+                                <tr>
+                                    <th>Pokémon</th>
+                                    <th>Stat</th>
+                                    <th>Value</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td id="bstNamehp">&nbsp;</td>
+                                    <td id="bstStathp">HP</td>
+                                    <td id="bstValuehp">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td id="bstNameattack">&nbsp;</td>
+                                    <td id="bstStatattack">Attack</td>
+                                    <td id="bstValueattack">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td id="bstNamedefense">&nbsp;</td>
+                                    <td id="bstStatdefense">Defense</td>
+                                    <td id="bstValuedefense">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td id="bstNamespAtk">&nbsp;</td>
+                                    <td id="bstStatspAtk">Special Attack</td>
+                                    <td id="bstValuespAtk">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td id="bstNamespDef">&nbsp;</td>
+                                    <td id="bstStatspDef">Special Defense</td>
+                                    <td id="bstValuespDef">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td id="bstNamespeed">&nbsp;</td>
+                                    <td id="bstStatspeed">Speed</td>
+                                    <td id="bstValuespeed">&nbsp;</td>
+                                </tr>
+                                <tr id="bstGameTotal">
+                                    <td><strong>Total</strong></td>
+                                    <td>&nbsp;</td>
+                                    <td id="bstGameValueTotal"><strong>&nbsp;</strong></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th colspan="3" class="table-title">OPTIMISED BST</th>
+                                </tr>
+                                <tr>
+                                    <th>Pokémon</th>
+                                    <th>Stat</th>
+                                    <th>Value</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td id="obstNamehp">&nbsp;</td>
+                                    <td id="obstStathp">HP</td>
+                                    <td id="obstValuehp">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td id="obstNameattack">&nbsp;</td>
+                                    <td id="obstStatattack">Attack</td>
+                                    <td id="obstValueattack">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td id="obstNamedefense">&nbsp;</td>
+                                    <td id="obstStatdefense">Defense</td>
+                                    <td id="obstValuedefense">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td id="obstNamespAtk">&nbsp;</td>
+                                    <td id="obstStatspAtk">Special Attack</td>
+                                    <td id="obstValuespAtk">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td id="obstNamespDef">&nbsp;</td>
+                                    <td id="obstStatspDef">Special Defense</td>
+                                    <td id="obstValuespDef">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td id="obstNamespeed">&nbsp;</td>
+                                    <td id="obstStatspeed">Speed</td>
+                                    <td id="obstValuespeed">&nbsp;</td>
+                                </tr>
+                                <tr id="obstGameTotal">
+                                    <td><strong>Total</strong></td>
+                                    <td>&nbsp;</td>
+                                    <td id="obstGameValueTotal"><strong>&nbsp;</strong></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </form>
-            </center>
-        </section>
+            </section>
+        </center>
     </div>
 
-    <!-- Right column -->
+    <!-- 2nd row -->
     <center>
-        <div class="column">
+        <div class="row">
             <section class="card">
                 <h2>🎲 Random Pokémon</h2>
                 <button id="randombtn" onclick="randomPokemonButton()">Generate Random Pokémon</button>
@@ -181,12 +207,6 @@
                 <center>
                     <div id="image-container"></div>
                 </center>
-            </section>
-
-            <section class="card">
-                <h2>🧠 Random Valorant Agent</h2>
-                <button id="randomAgentBtn" onclick="randomAgentBtn()">Generate Random Agent</button>
-                <p id="randomAgentResult">&nbsp;</p>
             </section>
 
             <section class="card">
@@ -198,8 +218,11 @@
             <section class="card">
                 <h2>📊 Team BST Calculator</h2>
                 <p>Enter up to six Pokémon to calculate their optimised base stat total (BST).</p>
-
                 <form id="main-form">
+                    <label for="calcMinMaxToggle" class="onOffToggle">
+                        <input type="checkbox" name="calcMinMaxToggle" id="calcMinMaxToggle" autocomplete="off" checked>
+                        <span class="slider"></span>
+                    </label>
                     <div class="pokemon-inputs">
                         <input type="text" id="poke1" placeholder="Pokémon 1">
                         <input type="text" id="poke2" placeholder="Pokémon 2">
@@ -216,6 +239,7 @@
                         <button type="button" id="bstButton" onclick="bstButtonFunction()">Submit</button>
                         <button type="reset" id="reset" onclick="resetForm()">Reset</button>
                     </div>
+
 
                     <div class="table-container">
                         <table>
